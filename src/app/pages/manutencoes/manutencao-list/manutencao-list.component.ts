@@ -3,14 +3,16 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ManutencaoService } from '../../../services/manutencao.service';
 import { Manutencao } from '../../../models/manutencao.model';
-
+import { FiltroServicoPipe } from '../../../pipes/filtro-servico.pipe';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-manutencao-list',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule,FormsModule,FiltroServicoPipe],
   templateUrl: './manutencao-list.component.html',
 })
 export class ManutencaoListComponent {
+  filtro = '';
   manutencoes: Manutencao[] = [];
   veiculoId!: number;
 
