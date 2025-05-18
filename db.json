@@ -13,13 +13,6 @@
       "email": "henrique@gmail.com",
       "senha": "123456",
       "role": "admin"
-    },
-    {
-      "id": "64f8",
-      "nome": "Andre",
-      "email": "andre@gmail.com",
-      "senha": "123456",
-      "role": "user"
     }
   ],
   "veiculos": [
