@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "json-server --watch db.json --port 3000",
+    "start": "concurrently \"npm run backend\" \"ng serve\"",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "dev": "concurrently \"ng serve\" \"json-server --watch db.json --port 3000\""
+    "dev": "concurrently \"ng serve\" \"json-server --watch db.json --port 3000\"",
+    "backend": "json-server --watch db.json --port 3000"
   },
   "private": true,
   "dependencies": {

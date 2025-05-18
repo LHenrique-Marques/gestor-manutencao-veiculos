@@ -1,59 +1,98 @@
-# GestorManutencaoVeiculos
+# 🚗 Gestor de Manutenção de Veículos
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.12.
+Sistema desenvolvido como Trabalho I da disciplina de Desenvolvimento Web com Angular, com o objetivo de ajudar usuários a gerenciar o histórico de manutenções dos seus veículos.
 
-## Development server
+## 📋 Descrição
 
-To start a local development server, run:
+Com o aumento da frota de veículos, manter os cuidados com manutenções periódicas é essencial. Este sistema permite ao usuário:
 
-```bash
-ng serve
-```
+- Cadastrar e gerenciar veículos
+- Registrar manutenções com data, quilometragem e tipo de serviço
+- Visualizar histórico de manutenções por veículo
+- Receber alertas sobre a ausência de manutenções recentes
+- Autenticação segura com login e proteção de rotas
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🔧 Tecnologias Utilizadas
 
-## Code scaffolding
+- Angular (Standalone Components)
+- Angular Material
+- TypeScript
+- JSON Server (simulando backend REST)
+- RxJS
+- Forms com validação
+- LocalStorage + JWT (simulado)
+- `concurrently` (para rodar backend e frontend juntos)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## ✅ Funcionalidades
 
-```bash
-ng generate component component-name
-```
+- 🔐 **Login Seguro com JWT**
+- 👥 **CRUD de Usuários**
+- 🚘 **CRUD de Veículos**
+- 🛠️ **CRUD de Manutenções**
+- 🔎 **Busca por Tipo de Serviço com Pipe**
+- 📊 **Histórico e Alertas de Manutenção**
+- 🧭 **Navegação SPA**
+- 📱 **Interface Responsiva com Angular Material**
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🧪 Como rodar o projeto
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### 1. Clone o repositório:
 
 ```bash
-ng test
+git clone https://github.com/seu-usuario/gestor-manutencao-veiculos.git
+cd gestor-manutencao-veiculos
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### 2. Instale as dependências:
 
 ```bash
-ng e2e
+npm install
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### 3. Instale o `concurrently` (se ainda não estiver instalado):
 
-## Additional Resources
+```bash
+npm install concurrently --save-dev
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### 4. Execute o projeto (backend + frontend):
+
+```bash
+npm start
+```
+
+### 🔁 O que acontece:
+
+- 🧩 JSON Server inicia em: `http://localhost:3000`
+- 🌐 Angular inicia em: `http://localhost:4200`
+
+## 🗂️ Estrutura de Pastas
+
+```
+src/app/
+├── pages/        # Componentes de UI (login, dashboard, veiculos, manutencoes)
+├── services/     # Serviços com lógica de negócio e integração com API
+├── models/       # Interfaces dos dados (usuario, veiculo, manutencao)
+├── guards/       # Proteção de rotas com autenticação
+├── pipes/        # Pipes para filtro de manutenções
+└── app.routes.ts # Roteamento SPA
+```
+
+## 📜 Script no package.json
+
+```json
+"scripts": {
+  "start": "concurrently \"npm run backend\" \"ng serve\"",
+  "backend": "json-server --watch db.json --port 3000"
+}
+```
+
+## 👨‍🎓 Autor
+
+**Luis Henrique Marques Franque Flores**  
+Curso: Análise e Desenvolvimento de Sistemas  
+UniSenac – Campus Porto Alegre
+
+---
+
+📌 _Este projeto foi desenvolvido com fins educacionais, para prática de Angular e boas práticas de desenvolvimento web._
