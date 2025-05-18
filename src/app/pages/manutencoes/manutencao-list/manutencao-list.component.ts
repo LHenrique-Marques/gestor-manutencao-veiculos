@@ -3,18 +3,16 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ManutencaoService } from '../../../services/manutencao.service';
 import { Manutencao } from '../../../models/manutencao.model';
-import { FiltroServicoPipe } from '../../../pipes/filtro-servico.pipe';
-import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-manutencao-list',
   standalone: true,
-  imports: [CommonModule, RouterModule,FormsModule,FiltroServicoPipe],
+  imports: [CommonModule, RouterModule],
   templateUrl: './manutencao-list.component.html',
 })
 export class ManutencaoListComponent {
-  filtro = '';
   manutencoes: Manutencao[] = [];
-  veiculoId!: number;
+  veiculoId!: string;
 
   constructor(
     public manutencaoService: ManutencaoService,
@@ -23,7 +21,7 @@ export class ManutencaoListComponent {
   ) {}
 
   ngOnInit() {
-    this.veiculoId = Number(this.route.snapshot.paramMap.get('veiculoId'));
+    this.veiculoId = this.route.snapshot.paramMap.get('veiculoId')!;
     this.manutencaoService.getByVeiculoId(this.veiculoId).subscribe(data => {
       this.manutencoes = data;
     });

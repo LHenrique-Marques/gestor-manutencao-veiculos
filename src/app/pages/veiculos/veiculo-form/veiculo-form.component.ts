@@ -15,7 +15,7 @@ import { Veiculo } from '../../../models/veiculo.model';
 export class VeiculoFormComponent {
   form: FormGroup;
   isEdit = false;
-  veiculoId!: number;
+  veiculoId!: string;
 
   constructor(
     public fb: FormBuilder,
@@ -37,7 +37,7 @@ export class VeiculoFormComponent {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.isEdit = true;
-      this.veiculoId = Number(id);
+      this.veiculoId = String(id);
       this.veiculoService.getById(this.veiculoId).subscribe(v => {
         this.form.patchValue(v);
       });
@@ -49,9 +49,9 @@ export class VeiculoFormComponent {
 
     const usuario = this.authService.getUser();
     const data: Veiculo = {
-      ...this.form.value,
-      usuarioId: this.authService.getUser()?.id,
-    };
+  ...this.form.value,
+  usuarioId: this.authService.getUser()?.id,
+  };
 
     const request = this.isEdit
       ? this.veiculoService.update(this.veiculoId, data)

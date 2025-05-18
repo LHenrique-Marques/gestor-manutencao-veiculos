@@ -2,11 +2,14 @@
 
 <ul>
   <li *ngFor="let u of usuarios">
-    <strong>{{ u.nome }}</strong> - {{ u.email }}
+    <strong>ID: {{ u.id }}</strong> - {{ u.nome }} - {{ u.email }}
+    <span *ngIf="u.role === 'admin'">(admin)</span>
     <span *ngIf="authService.isAdmin()">
-      <a [routerLink]="['/usuarios/editar', u.id]">Editar</a>
-      <button (click)="excluir(u.id)">Excluir</button>
-      <button *ngIf="u.role !== 'admin'" (click)="promoverAdmin(u)">Tornar Admin</button>
+      | <a [routerLink]="['/usuarios/editar', u.id]">Editar</a>
+      | <button (click)="excluir(u)">Excluir</button>
+      <button *ngIf="u.role !== 'admin'" (click)="promoverAdmin(u)">
+        Tornar Admin
+      </button>
     </span>
   </li>
 </ul>

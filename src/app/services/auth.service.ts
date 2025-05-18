@@ -15,21 +15,21 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(email: string, senha: string): Observable<boolean> {
-    return this.http.get<Usuario[]>(`${this.apiUrl}?email=${email}`).pipe(
-      map(users => {
-        const user = users[0];
-        if (user && user.senha === senha) {
-          const fakeToken = btoa(`${user.email}:${user.senha}`);
-          localStorage.setItem(this.tokenKey, fakeToken);
-          localStorage.setItem(this.userKey, JSON.stringify(user));
-          return true;
-        }
+  return this.http.get<Usuario[]>(`${this.apiUrl}?email=${email}`).pipe(
+    map(users => {
+      const user = users[0];
+      if (user && user.senha === senha) {
+        const fakeToken = btoa(`${user.email}:${user.senha}`);
+        localStorage.setItem(this.tokenKey, fakeToken);
+        localStorage.setItem(this.userKey, JSON.stringify(user));
+        return true;
+      }
+      throw new Error('Credenciais inválidas');
+    }),
+    catchError(() => throwError(() => new Error('Erro no login')))
+  );
+}
 
-        throw new Error('Credenciais inválidas');
-      }),
-      catchError(() => throwError(() => new Error('Erro no login')))
-    );
-  }
 
   logout(): void {
     localStorage.removeItem(this.tokenKey);

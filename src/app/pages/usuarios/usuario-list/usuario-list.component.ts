@@ -20,22 +20,39 @@ export class UsuarioListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.carregarUsuarios();
+  }
+
+  carregarUsuarios(): void {
     this.usuarioService.getAll().subscribe(data => {
       this.usuarios = data;
     });
   }
 
-  excluir(id: number) {
-    if (confirm('Tem certeza que deseja excluir este usuário?')) {
-      this.usuarioService.delete(id).subscribe(() => {
-        this.usuarios = this.usuarios.filter(u => u.id !== id);
+  excluir(usuario: Usuario): void {
+    if (confirm('Deseja realmente excluir este usuário?')) {
+      this.usuarioService.getVeiculosByUsuarioId(usuario.id).subscribe(veiculos => {
+        if (veiculos.length > 0) {
+          const destinoId = prompt('Digite o ID do usuário para transferir os veículos:');
+          if (!destinoId || destinoId.trim() === '') return alert('ID inválido.');
+
+          veiculos.forEach(veiculo => {
+            const atualizado = { ...veiculo, usuarioId: destinoId };
+            this.usuarioService.transferirVeiculo(veiculo.id, atualizado).subscribe();
+          });
+        }
+
+        this.usuarioService.delete(usuario.id).subscribe(() => {
+          this.carregarUsuarios();
+        });
       });
     }
   }
-  promoverAdmin(usuario: Usuario) {
-  const promovido: Usuario = { ...usuario, role: 'admin' };
-  this.usuarioService.update(usuario.id, promovido).subscribe(() => {
-    usuario.role = 'admin'; // atualiza localmente
-  });
-}
+
+  promoverAdmin(usuario: Usuario): void {
+    const atualizado: Usuario = { ...usuario, role: 'admin' };
+    this.usuarioService.update(usuario.id, atualizado).subscribe(() => {
+      usuario.role = 'admin';
+    });
+  }
 }

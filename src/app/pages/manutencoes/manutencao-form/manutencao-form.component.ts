@@ -15,7 +15,7 @@ export class ManutencaoFormComponent {
   form: FormGroup;
   isEdit = false;
   manutencaoId!: number;
-  veiculoId!: number;
+  veiculoId!: string; 
 
   constructor(
     public fb: FormBuilder,
@@ -32,7 +32,7 @@ export class ManutencaoFormComponent {
   }
 
   ngOnInit() {
-    this.veiculoId = Number(this.route.snapshot.paramMap.get('veiculoId'));
+    this.veiculoId = this.route.snapshot.paramMap.get('veiculoId')!;
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.isEdit = true;
@@ -48,9 +48,12 @@ export class ManutencaoFormComponent {
 
     const data: Manutencao = {
       ...this.form.value,
-      veiculoId: this.veiculoId,
-      id: this.manutencaoId
+      veiculoId: this.veiculoId
     };
+
+    if (this.isEdit) {
+      data.id = this.manutencaoId;
+    }
 
     const request = this.isEdit
       ? this.manutencaoService.update(this.manutencaoId, data)

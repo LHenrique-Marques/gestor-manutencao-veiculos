@@ -42,7 +42,7 @@ export class VeiculoListComponent {
     );
   }
 
-  excluir(id: number) {
+  excluir(id: string) {
     this.veiculoService.delete(id).subscribe(() => {
       this.veiculos = this.veiculos.filter(v => v.id !== id);
     });

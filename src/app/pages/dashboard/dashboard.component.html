@@ -1,26 +1,31 @@
-<h2>Bem-vindo, {{ usuario?.nome }}!</h2>
-<p>O que deseja fazer hoje?</p>
-<div *ngIf="alertas.length > 0" style="color: red;">
+<h2>Bem-vindo, {{ usuario?.nome }}</h2>
+
+<div *ngIf="alertas.length > 0">
+  <h3>⚠️ Alertas</h3>
   <ul>
-    <li *ngFor="let alerta of alertas">{{ alerta }}</li>
+    <li *ngFor="let alerta of alertas">
+      {{ alerta }}
+    </li>
   </ul>
 </div>
+<div *ngIf="veiculos.length > 0">
+  <h3>Seus veículos</h3>
+  <ul>
+    <li *ngFor="let v of veiculos">
+      {{ v.modelo }} ({{ v.placa }}) 
+      <button [routerLink]="['/manutencoes', v.id]">Ver Manutenções</button>
+    </li>
+  </ul>
+</div>
+<div style="margin-top: 1rem;">
+  <a [routerLink]="['/veiculos/novo']">
+    <button>+ Novo Veículo</button>
+  </a>
+</div>
 
-<nav>
-  <a routerLink="/veiculos">🚗 Gerenciar Veículos</a> |
-
-  <select [(ngModel)]="veiculoSelecionadoId">
-    <option *ngFor="let v of veiculos" [value]="v.id">
-      {{ v.marca }} {{ v.modelo }} ({{ v.placa }})
-    </option>
-  </select>
-
-  <a *ngIf="veiculoSelecionadoId" [routerLink]="['/manutencoes', veiculoSelecionadoId]">
-    🛠️ Ver Manutenções
-  </a> |
-  <button *ngIf="authService.isAdmin()" [routerLink]="['/usuarios']">
-  👥 Gerenciar Usuários
-  </button>
-  
-  <a (click)="logout()">🚪 Sair</a>
-</nav>
+<div *ngIf="authService.isAdmin()" style="margin-top: 1rem;">
+  <a [routerLink]="['/usuarios']">👤 Gerenciar Usuários</a>
+</div>
+<div style="margin-top: 1rem;">
+  <button (click)="logout()">Sair</button>
+</div>

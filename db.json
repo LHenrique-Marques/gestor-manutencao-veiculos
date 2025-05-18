@@ -6,6 +6,13 @@
       "email": "admin@admin.com",
       "senha": "123456",
       "role": "admin"
+    },
+    {
+      "id": "2f97",
+      "nome": "henrique",
+      "email": "henrique@gmail.com",
+      "senha": "123456",
+      "role": "admin"
     }
   ],
   "veiculos": [
@@ -25,17 +32,26 @@
       "marca": "Volksvagem",
       "ano": 2023,
       "combustivel": "Gasolina",
-      "usuarioId": null
+      "usuarioId": 1
+    },
+    {
+      "id": "11b6",
+      "placa": "AXT1902",
+      "modelo": "Prisma",
+      "marca": "Chevrolet",
+      "ano": 2023,
+      "combustivel": "Gasolina",
+      "usuarioId": "1"
+    },
+    {
+      "id": "d7c0",
+      "placa": "XTZ5502",
+      "modelo": "XRE 300",
+      "marca": "Honda",
+      "ano": 2024,
+      "combustivel": "Gasolina",
+      "usuarioId": 1
     }
   ],
-  "manutencoes": [
-    {
-      "id": "4b36",
-      "data": "2025-05-18",
-      "quilometragem": 10000,
-      "servico": "manutencao mensal",
-      "observacoes": "ok",
-      "veiculoId": null
-    }
-  ]
+  "manutencoes": []
 }

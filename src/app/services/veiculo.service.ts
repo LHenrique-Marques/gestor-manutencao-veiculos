@@ -15,11 +15,11 @@ export class VeiculoService {
     return this.http.get<Veiculo[]>(this.apiUrl);
   }
 
-  getById(id: number): Observable<Veiculo> {
+  getById(id: string): Observable<Veiculo> {
     return this.http.get<Veiculo>(`${this.apiUrl}/${id}`);
   }
 
-  getByUsuarioId(usuarioId: number): Observable<Veiculo[]> {
+  getByUsuarioId(usuarioId: string): Observable<Veiculo[]> {
     return this.http.get<Veiculo[]>(`${this.apiUrl}?usuarioId=${usuarioId}`);
   }
 
@@ -27,11 +27,11 @@ export class VeiculoService {
     return this.http.post<Veiculo>(this.apiUrl, veiculo);
   }
 
-  update(id: number, veiculo: Veiculo): Observable<Veiculo> {
+  update(id: string, veiculo: Veiculo): Observable<Veiculo> {
     return this.http.put<Veiculo>(`${this.apiUrl}/${id}`, veiculo);
   }
 
-  delete(id: number): Observable<void> {
+  delete(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

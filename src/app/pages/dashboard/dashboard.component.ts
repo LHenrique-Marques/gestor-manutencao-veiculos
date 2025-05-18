@@ -17,7 +17,7 @@ import { Veiculo } from '../../models/veiculo.model';
 export class DashboardComponent {
   usuario: any;
   veiculos: Veiculo[] = [];
-  veiculoSelecionadoId: number | null = null;
+  veiculoSelecionadoId: string | null = null;
   alertas: string[] = [];
 
   constructor(
@@ -38,6 +38,7 @@ export class DashboardComponent {
       if (veiculos.length > 0) {
         this.veiculoSelecionadoId = veiculos[0].id;
       }
+
       veiculos.forEach(veiculo => {
         this.manutencaoService.getByVeiculoId(veiculo.id).subscribe(manutencoes => {
           if (manutencoes.length === 0) {
