@@ -1,0 +1,71 @@
+{
+  "usuarios": [
+    {
+      "id": "1",
+      "nome": "Henrique",
+      "email": "henrique@teste.com",
+      "senha": "123456"
+    },
+    {
+      "id": "c802",
+      "nome": "Henrique Marques",
+      "email": "henrique@gmail.com",
+      "senha": "210922"
+    }
+  ],
+  "veiculos": [
+    {
+      "id": "1",
+      "usuarioId": 1,
+      "placa": "ABC1234",
+      "modelo": "Civic",
+      "marca": "Honda",
+      "ano": 2020,
+      "combustivel": "Gasolina"
+    },
+    {
+      "id": "5a74",
+      "placa": "BCD1345",
+      "modelo": "Chevette",
+      "marca": "Chevrolet",
+      "ano": 2002,
+      "combustivel": "Gasolina",
+      "usuarioId": "1"
+    },
+    {
+      "id": "95a7",
+      "placa": "IJK9302",
+      "modelo": "Joy",
+      "marca": "Chevrolet",
+      "ano": 2018,
+      "combustivel": "Gasolina",
+      "usuarioId": "1"
+    }
+  ],
+  "manutencoes": [
+    {
+      "id": "9caa",
+      "data": "2002-09-21",
+      "quilometragem": 1,
+      "servico": "teste",
+      "observacoes": "obs",
+      "veiculoId": 1
+    },
+    {
+      "id": "2a77",
+      "data": "2020-09-21",
+      "quilometragem": 16,
+      "servico": "Testando",
+      "observacoes": "ok",
+      "veiculoId": 1
+    },
+    {
+      "id": "48fd",
+      "data": "2025-05-15",
+      "quilometragem": 100000,
+      "servico": "Ajuste diario",
+      "observacoes": "ok",
+      "veiculoId": 1
+    }
+  ]
+}

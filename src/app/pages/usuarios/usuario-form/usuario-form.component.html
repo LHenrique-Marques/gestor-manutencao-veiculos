@@ -1,0 +1,14 @@
+<h2>Cadastro de Usuário</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <label>Nome:</label>
+  <input type="text" formControlName="nome" />
+
+  <label>Email:</label>
+  <input type="email" formControlName="email" />
+
+  <label>Senha:</label>
+  <input type="password" formControlName="senha" />
+
+  <button type="submit" [disabled]="form.invalid">Cadastrar</button>
+</form>

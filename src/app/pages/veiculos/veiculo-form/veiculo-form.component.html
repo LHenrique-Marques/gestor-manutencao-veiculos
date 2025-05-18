@@ -1,0 +1,35 @@
+<h2>{{ isEdit ? 'Editar Veículo' : 'Novo Veículo' }}</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div>
+    <label>Placa:</label>
+    <input formControlName="placa" />
+  </div>
+
+  <div>
+    <label>Modelo:</label>
+    <input formControlName="modelo" />
+  </div>
+
+  <div>
+    <label>Marca:</label>
+    <input formControlName="marca" />
+  </div>
+
+  <div>
+    <label>Ano:</label>
+    <input type="number" formControlName="ano" />
+  </div>
+
+  <div>
+    <label>Combustível:</label>
+    <select formControlName="combustivel">
+      <option value="Gasolina">Gasolina</option>
+      <option value="Etanol">Etanol</option>
+      <option value="Diesel">Diesel</option>
+      <option value="Flex">Flex</option>
+    </select>
+  </div>
+
+  <button routerLink="/dashboard" type="submit">{{ isEdit ? 'Salvar Alterações' : 'Cadastrar' }}</button>
+</form>

@@ -1,0 +1,25 @@
+<h2>{{ isEdit ? 'Editar Manutenção' : 'Nova Manutenção' }}</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div>
+    <label>Data:</label>
+    <input type="date" formControlName="data" />
+  </div>
+
+  <div>
+    <label>Quilometragem:</label>
+    <input type="number" formControlName="quilometragem" />
+  </div>
+
+  <div>
+    <label>Serviço:</label>
+    <input type="text" formControlName="servico" />
+  </div>
+
+  <div>
+    <label>Observações:</label>
+    <textarea formControlName="observacoes"></textarea>
+  </div>
+
+  <button type="submit" routerLink='/manutencoes/veiculoSelecionadoId' >{{ isEdit ? 'Salvar Alterações' : 'Cadastrar' }}</button>
+</form>

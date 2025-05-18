@@ -1,0 +1,33 @@
+<div class="login-container">
+  <h2>Login</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>Email:</label>
+      <input type="email" formControlName="email" />
+      <div *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">
+        Email inválido
+      </div>
+    </div>
+
+    <div>
+      <label>Senha:</label>
+      <input type="password" formControlName="senha" />
+      <div *ngIf="loginForm.controls['senha'].invalid && loginForm.controls['senha'].touched">
+        Senha obrigatória
+      </div>
+    </div>
+
+    <div *ngIf="errorMessage" style="color: red;">
+      {{ errorMessage }}
+    </div>
+
+    <button type="submit" [disabled]="loginForm.invalid"  style="cursor: pointer;">Entrar</button>
+  </form>
+
+  <p style="margin-top: 1rem;">
+    Não tem uma conta?
+    <a routerLink="/usuarios/novo" style="color: blue; text-decoration: underline;">
+      Cadastre-se aqui
+    </a>
+  </p>
+</div>

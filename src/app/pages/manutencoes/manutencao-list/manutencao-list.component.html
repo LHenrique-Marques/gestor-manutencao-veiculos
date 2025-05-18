@@ -1,0 +1,11 @@
+<h2>Manutenções do Veículo</h2>
+<a [routerLink]="['/manutencoes', veiculoId, 'nova']">+ Nova Manutenção</a>
+
+<ul>
+  <li *ngFor="let m of manutencoes">
+    <strong>{{ m.data }}</strong> - {{ m.servico }} ({{ m.quilometragem }} km)
+    <button [routerLink]="['/manutencoes', veiculoId, 'editar', m.id]">Editar</button>
+    <button (click)="excluir(m.id)">Excluir</button>
+  </li>
+</ul>
+<a routerLink="/dashboard">⬅️ Voltar para o Dashboard</a>

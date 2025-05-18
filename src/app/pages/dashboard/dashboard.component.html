@@ -1,0 +1,23 @@
+<h2>Bem-vindo, {{ usuario?.nome }}!</h2>
+<p>O que deseja fazer hoje?</p>
+<div *ngIf="alertas.length > 0" style="color: red;">
+  <ul>
+    <li *ngFor="let alerta of alertas">{{ alerta }}</li>
+  </ul>
+</div>
+
+<nav>
+  <a routerLink="/veiculos">🚗 Gerenciar Veículos</a> |
+
+  <select [(ngModel)]="veiculoSelecionadoId">
+    <option *ngFor="let v of veiculos" [value]="v.id">
+      {{ v.marca }} {{ v.modelo }} ({{ v.placa }})
+    </option>
+  </select>
+
+  <a *ngIf="veiculoSelecionadoId" [routerLink]="['/manutencoes', veiculoSelecionadoId]">
+    🛠️ Ver Manutenções
+  </a> |
+  
+  <a (click)="logout()">🚪 Sair</a>
+</nav>
