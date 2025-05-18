@@ -21,7 +21,7 @@ export class DashboardComponent {
   alertas: string[] = [];
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private veiculoService: VeiculoService,
     private manutencaoService: ManutencaoService,
     private router: Router

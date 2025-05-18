@@ -32,4 +32,10 @@ export class UsuarioListComponent implements OnInit {
       });
     }
   }
+  promoverAdmin(usuario: Usuario) {
+  const promovido: Usuario = { ...usuario, role: 'admin' };
+  this.usuarioService.update(usuario.id, promovido).subscribe(() => {
+    usuario.role = 'admin'; // atualiza localmente
+  });
+}
 }

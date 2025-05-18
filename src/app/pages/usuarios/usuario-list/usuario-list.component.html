@@ -3,11 +3,10 @@
 <ul>
   <li *ngFor="let u of usuarios">
     <strong>{{ u.nome }}</strong> - {{ u.email }}
-    
-    <!-- Só admins veem os botões -->
     <span *ngIf="authService.isAdmin()">
       <a [routerLink]="['/usuarios/editar', u.id]">Editar</a>
       <button (click)="excluir(u.id)">Excluir</button>
+      <button *ngIf="u.role !== 'admin'" (click)="promoverAdmin(u)">Tornar Admin</button>
     </span>
   </li>
 </ul>

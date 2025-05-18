@@ -18,6 +18,9 @@
   <a *ngIf="veiculoSelecionadoId" [routerLink]="['/manutencoes', veiculoSelecionadoId]">
     🛠️ Ver Manutenções
   </a> |
+  <button *ngIf="authService.isAdmin()" [routerLink]="['/usuarios']">
+  👥 Gerenciar Usuários
+  </button>
   
   <a (click)="logout()">🚪 Sair</a>
 </nav>
