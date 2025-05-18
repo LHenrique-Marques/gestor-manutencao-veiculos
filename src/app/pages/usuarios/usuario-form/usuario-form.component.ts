@@ -27,9 +27,12 @@ export class UsuarioFormComponent {
 
   onSubmit() {
     if (this.form.invalid) return;
-
-    this.usuarioService.create(this.form.value).subscribe(() => {
-      this.router.navigate(['/dashboard']);
+    const novoUsuario = {
+      ...this.form.value,
+      role: 'user'
+    }
+    this.usuarioService.create(novoUsuario).subscribe(() => {
+      this.router.navigate(['/login']);
     });
   }
 }

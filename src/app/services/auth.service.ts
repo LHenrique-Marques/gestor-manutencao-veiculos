@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../models/usuario.model';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
@@ -24,13 +24,14 @@ export class AuthService {
           localStorage.setItem(this.userKey, JSON.stringify(user));
           return true;
         }
+
         throw new Error('Credenciais inválidas');
       }),
       catchError(() => throwError(() => new Error('Erro no login')))
     );
   }
 
-  logout() {
+  logout(): void {
     localStorage.removeItem(this.tokenKey);
     localStorage.removeItem(this.userKey);
   }
@@ -42,5 +43,10 @@ export class AuthService {
   getUser(): Usuario | null {
     const user = localStorage.getItem(this.userKey);
     return user ? JSON.parse(user) : null;
+  }
+
+  isAdmin(): boolean {
+    const user = this.getUser();
+    return user?.role === 'admin';
   }
 }

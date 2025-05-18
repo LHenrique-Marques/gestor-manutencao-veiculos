@@ -38,8 +38,6 @@ export class DashboardComponent {
       if (veiculos.length > 0) {
         this.veiculoSelecionadoId = veiculos[0].id;
       }
-
-      // Verificar manutenções para regra de negócio
       veiculos.forEach(veiculo => {
         this.manutencaoService.getByVeiculoId(veiculo.id).subscribe(manutencoes => {
           if (manutencoes.length === 0) {
@@ -47,7 +45,6 @@ export class DashboardComponent {
             return;
           }
 
-          // Pega a última manutenção (por data)
           const ult = manutencoes.sort((a, b) => b.data.localeCompare(a.data))[0];
           const dias = this.diasDesde(ult.data);
           if (dias > 180) {

@@ -30,6 +30,7 @@
       <option value="Flex">Flex</option>
     </select>
   </div>
+  <button type="submit">{{ isEdit ? 'Salvar Alterações' : 'Cadastrar' }}</button>
+  <a routerLink="/dashboard">⬅️ Cancelar</a>
 
-  <button routerLink="/dashboard" type="submit">{{ isEdit ? 'Salvar Alterações' : 'Cadastrar' }}</button>
 </form>

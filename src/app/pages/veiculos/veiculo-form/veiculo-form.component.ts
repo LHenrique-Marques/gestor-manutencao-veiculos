@@ -50,8 +50,7 @@ export class VeiculoFormComponent {
     const usuario = this.authService.getUser();
     const data: Veiculo = {
       ...this.form.value,
-      usuarioId: usuario?.id,
-      id: this.veiculoId
+      usuarioId: this.authService.getUser()?.id,
     };
 
     const request = this.isEdit

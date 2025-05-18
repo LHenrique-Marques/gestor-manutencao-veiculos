@@ -1,0 +1,15 @@
+<h2>Lista de Usuários</h2>
+
+<ul>
+  <li *ngFor="let u of usuarios">
+    <strong>{{ u.nome }}</strong> - {{ u.email }}
+    
+    <!-- Só admins veem os botões -->
+    <span *ngIf="authService.isAdmin()">
+      <a [routerLink]="['/usuarios/editar', u.id]">Editar</a>
+      <button (click)="excluir(u.id)">Excluir</button>
+    </span>
+  </li>
+</ul>
+
+<a routerLink="/dashboard">⬅️ Voltar ao Dashboard</a>
