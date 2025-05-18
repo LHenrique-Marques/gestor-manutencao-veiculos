@@ -3,12 +3,25 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ManutencaoService } from '../../../services/manutencao.service';
 import { Manutencao } from '../../../models/manutencao.model';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+
 
 @Component({
   selector: 'app-manutencao-list',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [
+  CommonModule,
+  RouterModule,
+  MatCardModule,
+  MatListModule,
+  MatButtonModule,
+  MatIconModule
+  ],
   templateUrl: './manutencao-list.component.html',
+  styleUrl:'manutencao-list.component.css'
 })
 export class ManutencaoListComponent {
   manutencoes: Manutencao[] = [];

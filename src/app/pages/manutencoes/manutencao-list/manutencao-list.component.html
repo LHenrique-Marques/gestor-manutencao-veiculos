@@ -1,11 +1,28 @@
-<h2>Manutenções do Veículo</h2>
-<a [routerLink]="['/manutencoes', veiculoId, 'nova']">+ Nova Manutenção</a>
+<mat-card>
+  <mat-card-title>Manutenções do Veículo</mat-card-title>
+  <mat-card-subtitle>Veículo ID: {{ veiculoId }}</mat-card-subtitle>
 
-<ul>
-  <li *ngFor="let m of manutencoes">
-    <strong>{{ m.data }}</strong> - {{ m.servico }} ({{ m.quilometragem }} km)
-    <button [routerLink]="['/manutencoes', veiculoId, 'editar', m.id]">Editar</button>
-    <button (click)="excluir(m.id)">Excluir</button>
-  </li>
-</ul>
-<a routerLink="/dashboard">⬅️ Voltar para o Dashboard</a>
+  <div style="margin: 1rem 0;">
+    <button mat-raised-button color="primary" [routerLink]="['/manutencoes', veiculoId, 'nova']">
+      + Nova Manutenção
+    </button>
+  </div>
+
+  <mat-list>
+    <mat-list-item *ngFor="let m of manutencoes">
+      <div class="manutencao-item">
+        <div>
+          <strong>{{ m.data }}</strong> - {{ m.servico }} ({{ m.quilometragem }} km)
+        </div>
+        <div class="botoes">
+          <button mat-button color="accent" [routerLink]="['/manutencoes', veiculoId, 'editar', m.id]">Editar</button>
+          <button mat-button color="warn" (click)="excluir(m.id)">Excluir</button>
+        </div>
+      </div>
+    </mat-list-item>
+  </mat-list>
+
+  <div style="margin-top: 2rem;">
+    <button mat-stroked-button routerLink="/dashboard">⬅️ Voltar para o Dashboard</button>
+  </div>
+</mat-card>

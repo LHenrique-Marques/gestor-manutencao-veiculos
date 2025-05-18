@@ -1,25 +1,29 @@
-<h2>{{ isEdit ? 'Editar Manutenção' : 'Nova Manutenção' }}</h2>
+<mat-card>
+  <mat-card-title>{{ isEdit ? 'Editar Manutenção' : 'Nova Manutenção' }}</mat-card-title>
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div>
-    <label>Data:</label>
-    <input type="date" formControlName="data" />
-  </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Data</mat-label>
+      <input matInput type="date" formControlName="data" />
+    </mat-form-field>
 
-  <div>
-    <label>Quilometragem:</label>
-    <input type="number" formControlName="quilometragem" />
-  </div>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Quilometragem</mat-label>
+      <input matInput type="number" formControlName="quilometragem" />
+    </mat-form-field>
 
-  <div>
-    <label>Serviço:</label>
-    <input type="text" formControlName="servico" />
-  </div>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Serviço</mat-label>
+      <input matInput formControlName="servico" />
+    </mat-form-field>
 
-  <div>
-    <label>Observações:</label>
-    <textarea formControlName="observacoes"></textarea>
-  </div>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Observações</mat-label>
+      <textarea matInput formControlName="observacoes" rows="3"></textarea>
+    </mat-form-field>
 
-  <button type="submit">{{ isEdit ? 'Salvar Alterações' : 'Cadastrar' }}</button>
-</form>
+    <button mat-raised-button color="primary" type="submit">
+      {{ isEdit ? 'Salvar Alterações' : 'Cadastrar' }}
+    </button>
+  </form>
+</mat-card>

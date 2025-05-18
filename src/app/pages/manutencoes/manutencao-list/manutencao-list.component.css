@@ -1,0 +1,17 @@
+mat-card {
+  margin: 2rem auto;
+  padding: 2rem;
+  max-width: 700px;
+}
+
+.manutencao-item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.botoes {
+  display: flex;
+  gap: 0.5rem;
+}

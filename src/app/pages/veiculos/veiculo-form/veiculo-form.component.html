@@ -1,36 +1,45 @@
-<h2>{{ isEdit ? 'Editar Veículo' : 'Novo Veículo' }}</h2>
+<mat-card>
+  <mat-card-title>{{ isEdit ? 'Editar Veículo' : 'Novo Veículo' }}</mat-card-title>
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div>
-    <label>Placa:</label>
-    <input formControlName="placa" />
-  </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Placa</mat-label>
+      <input matInput formControlName="placa" />
+    </mat-form-field>
 
-  <div>
-    <label>Modelo:</label>
-    <input formControlName="modelo" />
-  </div>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Modelo</mat-label>
+      <input matInput formControlName="modelo" />
+    </mat-form-field>
 
-  <div>
-    <label>Marca:</label>
-    <input formControlName="marca" />
-  </div>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Marca</mat-label>
+      <input matInput formControlName="marca" />
+    </mat-form-field>
 
-  <div>
-    <label>Ano:</label>
-    <input type="number" formControlName="ano" />
-  </div>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Ano</mat-label>
+      <input matInput type="number" formControlName="ano" />
+    </mat-form-field>
 
-  <div>
-    <label>Combustível:</label>
-    <select formControlName="combustivel">
-      <option value="Gasolina">Gasolina</option>
-      <option value="Etanol">Etanol</option>
-      <option value="Diesel">Diesel</option>
-      <option value="Flex">Flex</option>
-    </select>
-  </div>
-  <button type="submit">{{ isEdit ? 'Salvar Alterações' : 'Cadastrar' }}</button>
-  <a routerLink="/dashboard">⬅️ Cancelar</a>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Combustível</mat-label>
+      <mat-select formControlName="combustivel">
+        <mat-option value="Gasolina">Gasolina</mat-option>
+        <mat-option value="Etanol">Etanol</mat-option>
+        <mat-option value="Diesel">Diesel</mat-option>
+        <mat-option value="Flex">Flex</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-</form>
+    <div class="botoes">
+      <button mat-raised-button color="primary" type="submit">
+        {{ isEdit ? 'Salvar Alterações' : 'Cadastrar' }}
+      </button>
+
+      <button mat-stroked-button color="warn" routerLink="/dashboard">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</mat-card>

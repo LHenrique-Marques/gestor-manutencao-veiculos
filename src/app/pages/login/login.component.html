@@ -1,33 +1,36 @@
-<div class="login-container">
-  <h2>Login</h2>
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label>Email:</label>
-      <input type="email" formControlName="email" />
-      <div *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">
-        Email inválido
+<div class="login-wrapper">
+  <mat-card>
+    <mat-card-title>Login</mat-card-title>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" />
+        <mat-error *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+          Email inválido
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Senha</mat-label>
+        <input matInput type="password" formControlName="senha" />
+        <mat-error *ngIf="loginForm.get('senha')?.touched && loginForm.get('senha')?.invalid">
+          Senha obrigatória
+        </mat-error>
+      </mat-form-field>
+
+      <div *ngIf="errorMessage" style="color: red; margin-bottom: 1rem;">
+        {{ errorMessage }}
       </div>
-    </div>
 
-    <div>
-      <label>Senha:</label>
-      <input type="password" formControlName="senha" />
-      <div *ngIf="loginForm.controls['senha'].invalid && loginForm.controls['senha'].touched">
-        Senha obrigatória
-      </div>
-    </div>
+      <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
+        Entrar
+      </button>
+    </form>
 
-    <div *ngIf="errorMessage" style="color: red;">
-      {{ errorMessage }}
-    </div>
-
-    <button type="submit" [disabled]="loginForm.invalid"  style="cursor: pointer;">Entrar</button>
-  </form>
-
-  <p style="margin-top: 1rem;">
-    Não tem uma conta?
-    <a routerLink="/usuarios/novo" style="color: blue; text-decoration: underline;">
-      Cadastre-se aqui
-    </a>
-  </p>
+    <p style="margin-top: 1rem;">
+      Não tem uma conta?
+      <a routerLink="/usuarios/novo" style="color: blue; text-decoration: underline;">Cadastre-se aqui</a>
+    </p>
+  </mat-card>
 </div>

@@ -6,13 +6,27 @@ import { AuthService } from '../../services/auth.service';
 import { VeiculoService } from '../../services/veiculo.service';
 import { ManutencaoService } from '../../services/manutencao.service';
 import { Veiculo } from '../../models/veiculo.model';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [
+  CommonModule,
+  RouterModule,
+  FormsModule,
+  MatCardModule,
+  MatButtonModule,
+  MatListModule,
+  MatIconModule
+]
+,
   templateUrl: './dashboard.component.html',
-  styleUrls: []
+  styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
   usuario: any;

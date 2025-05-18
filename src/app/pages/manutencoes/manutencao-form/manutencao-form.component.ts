@@ -4,12 +4,27 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ManutencaoService } from '../../../services/manutencao.service';
 import { Manutencao } from '../../../models/manutencao.model';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+
 
 @Component({
   selector: 'app-manutencao-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [
+  CommonModule,
+  ReactiveFormsModule,
+  RouterModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatButtonModule,
+  MatCardModule
+]
+,
   templateUrl: './manutencao-form.component.html',
+  styleUrl:'./manutencao-form.component.css'
 })
 export class ManutencaoFormComponent {
   form: FormGroup;

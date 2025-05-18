@@ -1,17 +1,25 @@
-<h2>Lista de Usuários</h2>
+<mat-card>
+  <mat-card-title>Lista de Usuários</mat-card-title>
 
-<ul>
-  <li *ngFor="let u of usuarios">
-    <strong>ID: {{ u.id }}</strong> - {{ u.nome }} - {{ u.email }}
-    <span *ngIf="u.role === 'admin'">(admin)</span>
-    <span *ngIf="authService.isAdmin()">
-      | <a [routerLink]="['/usuarios/editar', u.id]">Editar</a>
-      | <button (click)="excluir(u)">Excluir</button>
-      <button *ngIf="u.role !== 'admin'" (click)="promoverAdmin(u)">
-        Tornar Admin
-      </button>
-    </span>
-  </li>
-</ul>
+  <mat-list>
+    <mat-list-item *ngFor="let u of usuarios">
+      <div class="usuario-item">
+        <div>
+          <strong>ID: {{ u.id }}</strong> - {{ u.nome }} - {{ u.email }}
+          <span *ngIf="u.role === 'admin'">(admin)</span>
+        </div>
+        <div *ngIf="authService.isAdmin()" class="botoes">
+          <button mat-button color="accent" [routerLink]="['/usuarios/editar', u.id]">Editar</button>
+          <button mat-button color="warn" (click)="excluir(u)">Excluir</button>
+          <button mat-button color="primary" *ngIf="u.role !== 'admin'" (click)="promoverAdmin(u)">
+            Tornar Admin
+          </button>
+        </div>
+      </div>
+    </mat-list-item>
+  </mat-list>
 
-<a routerLink="/dashboard">⬅️ Voltar ao Dashboard</a>
+  <div style="margin-top: 2rem;">
+    <button mat-stroked-button routerLink="/dashboard">⬅️ Voltar ao Dashboard</button>
+  </div>
+</mat-card>

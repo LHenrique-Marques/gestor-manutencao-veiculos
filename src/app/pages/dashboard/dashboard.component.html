@@ -1,31 +1,25 @@
 <h2>Bem-vindo, {{ usuario?.nome }}</h2>
 
-<div *ngIf="alertas.length > 0">
+<div *ngIf="alertas.length > 0" class="alerta-container">
   <h3>⚠️ Alertas</h3>
-  <ul>
-    <li *ngFor="let alerta of alertas">
-      {{ alerta }}
-    </li>
-  </ul>
-</div>
-<div *ngIf="veiculos.length > 0">
-  <h3>Seus veículos</h3>
-  <ul>
-    <li *ngFor="let v of veiculos">
-      {{ v.modelo }} ({{ v.placa }}) 
-      <button [routerLink]="['/manutencoes', v.id]">Ver Manutenções</button>
-    </li>
-  </ul>
-</div>
-<div style="margin-top: 1rem;">
-  <a [routerLink]="['/veiculos/novo']">
-    <button>+ Novo Veículo</button>
-  </a>
+  <mat-list>
+    <mat-list-item *ngFor="let alerta of alertas">
+      <mat-icon color="warn">warning</mat-icon>
+      <span style="margin-left: 8px;">{{ alerta }}</span>
+    </mat-list-item>
+  </mat-list>
 </div>
 
-<div *ngIf="authService.isAdmin()" style="margin-top: 1rem;">
-  <a [routerLink]="['/usuarios']">👤 Gerenciar Usuários</a>
-</div>
-<div style="margin-top: 1rem;">
-  <button (click)="logout()">Sair</button>
+<div class="botao-container">
+  <button *ngIf="authService.isAdmin()" mat-stroked-button color="accent" routerLink="/usuarios">
+    👤 Gerenciar Usuários
+  </button>
+
+  <button mat-raised-button color="primary" routerLink="/veiculos">
+    Ver Meus Veículos
+  </button>
+
+  <button mat-stroked-button color="warn" (click)="logout()">
+    Sair
+  </button>
 </div>

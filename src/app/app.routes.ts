@@ -19,5 +19,7 @@ export const routes: Routes = [
   { path: 'manutencoes/:veiculoId/editar/:id', component: ManutencaoFormComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'usuarios/novo',loadComponent: () => import('./pages/usuarios/usuario-form/usuario-form.component').then(m => m.UsuarioFormComponent)},
-  { path: 'usuarios',loadComponent: () =>import('./pages/usuarios/usuario-list/usuario-list.component').then(m => m.UsuarioListComponent),canActivate: [AdminGuard]}
+  { path: 'usuarios',loadComponent: () =>import('./pages/usuarios/usuario-list/usuario-list.component').then(m => m.UsuarioListComponent),canActivate: [AdminGuard]},
+  { path: 'usuarios/editar/:id',loadComponent: () =>import('./pages/usuarios/usuario-form/usuario-form.component').then((m) => m.UsuarioFormComponent),},
+  { path: 'veiculos',loadComponent: () =>import('./pages/veiculos/veiculo-list/veiculo-list.component').then((m) => m.VeiculoListComponent),},
 ];

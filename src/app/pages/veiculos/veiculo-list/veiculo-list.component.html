@@ -1,17 +1,32 @@
-<h2>Meus Veículos</h2>
-<input
-  type="text"
-  placeholder="Buscar por placa, modelo ou marca..."
-  [(ngModel)]="termoBusca"
-/>
+<mat-card>
+  <mat-card-title>Meus Veículos</mat-card-title>
 
-<a routerLink="/veiculos/novo">+ Novo Veículo</a>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Buscar por placa, modelo ou marca...</mat-label>
+    <input matInput type="text" [(ngModel)]="termoBusca" />
+  </mat-form-field>
 
-<ul>
-  <li *ngFor="let v of veiculosFiltrados">
-    <strong>{{ v.placa }}</strong> - {{ v.marca }} {{ v.modelo }} ({{ v.ano }})
-    <button (click)="router.navigate(['/veiculos/editar', v.id])">Editar</button>
-    <button (click)="excluir(v.id)">Excluir</button>
-  </li>
-</ul>
-<a routerLink="/dashboard">⬅️ Voltar para o Dashboard</a>
+  <div style="margin: 1rem 0;">
+    <button mat-raised-button color="primary" routerLink="/veiculos/novo">
+      + Novo Veículo
+    </button>
+  </div>
+
+  <mat-list>
+    <mat-list-item *ngFor="let v of veiculosFiltrados">
+      <div class="veiculo-item">
+        <div>
+          <strong>{{ v.placa }}</strong> - {{ v.marca }} {{ v.modelo }} ({{ v.ano }})
+        </div>
+        <div class="botoes">
+          <button mat-button color="accent" (click)="router.navigate(['/veiculos/editar', v.id])">Editar</button>
+          <button mat-button color="warn" (click)="excluir(v.id)">Excluir</button>
+        </div>
+      </div>
+    </mat-list-item>
+  </mat-list>
+
+  <div style="margin-top: 2rem;">
+    <button mat-stroked-button routerLink="/dashboard">⬅️ Voltar para o Dashboard</button>
+  </div>
+</mat-card>

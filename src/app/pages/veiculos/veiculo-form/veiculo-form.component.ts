@@ -5,12 +5,28 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { VeiculoService } from '../../../services/veiculo.service';
 import { AuthService } from '../../../services/auth.service';
 import { Veiculo } from '../../../models/veiculo.model';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-veiculo-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [
+  CommonModule,
+  ReactiveFormsModule,
+  RouterModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSelectModule,
+  MatButtonModule,
+  MatCardModule
+]
+,
   templateUrl: './veiculo-form.component.html',
+  styleUrl:'./veiculo-form.component.css'
 })
 export class VeiculoFormComponent {
   form: FormGroup;

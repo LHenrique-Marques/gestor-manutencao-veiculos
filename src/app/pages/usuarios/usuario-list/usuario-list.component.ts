@@ -4,11 +4,24 @@ import { RouterModule } from '@angular/router';
 import { UsuarioService } from '../../../services/usuario.service';
 import { Usuario } from '../../../models/usuario.model';
 import { AuthService } from '../../../services/auth.service';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-usuario-list',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [
+  CommonModule,
+  RouterModule,
+  MatCardModule,
+  MatListModule,
+  MatButtonModule,
+  MatIconModule
+]
+,
+  styleUrl:'./usuario-list.component.css',
   templateUrl: './usuario-list.component.html',
 })
 export class UsuarioListComponent implements OnInit {

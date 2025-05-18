@@ -1,0 +1,43 @@
+h2 {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 2rem;
+  color: #333;
+}
+
+mat-card {
+  margin: 2rem auto;
+  padding: 1.5rem;
+  max-width: 700px;
+  background-color: #fafafa;
+}
+
+.alerta-container {
+  margin: 2rem auto;
+  max-width: 700px;
+}
+
+.alerta-container h3 {
+  color: #d32f2f;
+  margin-bottom: 1rem;
+}
+
+mat-list-item {
+  background-color: #fff3e0;
+  border-left: 4px solid #f44336;
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.botao-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+button {
+  min-width: 180px;
+}

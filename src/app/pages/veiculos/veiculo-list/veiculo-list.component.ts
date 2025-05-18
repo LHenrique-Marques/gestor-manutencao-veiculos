@@ -5,12 +5,31 @@ import { VeiculoService } from '../../../services/veiculo.service';
 import { AuthService } from '../../../services/auth.service';
 import { Veiculo } from '../../../models/veiculo.model';
 import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+
 
 @Component({
   selector: 'app-veiculo-list',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [
+  CommonModule,
+  RouterModule,
+  FormsModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatButtonModule,
+  MatListModule,
+  MatIconModule
+]
+,
   templateUrl: './veiculo-list.component.html',
+  styleUrl: './veiculo-list.component.css'
 })
 export class VeiculoListComponent {
   veiculos: Veiculo[] = [];

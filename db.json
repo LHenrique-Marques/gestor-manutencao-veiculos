@@ -13,6 +13,13 @@
       "email": "henrique@gmail.com",
       "senha": "123456",
       "role": "admin"
+    },
+    {
+      "id": "64f8",
+      "nome": "Andre",
+      "email": "andre@gmail.com",
+      "senha": "123456",
+      "role": "user"
     }
   ],
   "veiculos": [
@@ -70,6 +77,14 @@
       "servico": "testando",
       "observacoes": "ok",
       "veiculoId": "c948"
+    },
+    {
+      "id": "d794",
+      "data": "2025-05-18",
+      "quilometragem": 2000,
+      "servico": "avaliacao",
+      "observacoes": "ok",
+      "veiculoId": "dd83"
     }
   ]
 }
