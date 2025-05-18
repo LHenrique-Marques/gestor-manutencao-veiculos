@@ -51,7 +51,25 @@
       "ano": 2024,
       "combustivel": "Gasolina",
       "usuarioId": 1
+    },
+    {
+      "id": "c948",
+      "placa": "XTZ1235",
+      "modelo": "XRE 300",
+      "marca": "Honda",
+      "ano": 2025,
+      "combustivel": "Gasolina",
+      "usuarioId": "2f97"
     }
   ],
-  "manutencoes": []
+  "manutencoes": [
+    {
+      "id": "c5c4",
+      "data": "2002-09-21",
+      "quilometragem": 10000,
+      "servico": "testando",
+      "observacoes": "ok",
+      "veiculoId": "c948"
+    }
+  ]
 }
