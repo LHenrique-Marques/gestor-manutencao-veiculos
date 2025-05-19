@@ -48,13 +48,6 @@ cd gestor-manutencao-veiculos
 ```bash
 npm install
 ```
-
-### 3. Instale o `concurrently` (se ainda não estiver instalado):
-
-```bash
-npm install concurrently --save-dev
-```
-
 ### 4. Execute o projeto (backend + frontend):
 
 ```bash
