@@ -1,5 +1,4 @@
 <h2>Bem-vindo, {{ usuario?.nome }}</h2>
-
 <div *ngIf="alertas.length > 0" class="alerta-container">
   <h3>⚠️ Alertas</h3>
   <mat-list>
@@ -11,15 +10,34 @@
 </div>
 
 <div class="botao-container">
-  <button *ngIf="authService.isAdmin()" mat-stroked-button color="accent" routerLink="/usuarios">
-    👤 Gerenciar Usuários
+  <button *ngIf="authService.isAdmin()" mat-raised-button color="primary" routerLink="/usuarios">
+    Gerenciar Usuários
   </button>
 
   <button mat-raised-button color="primary" routerLink="/veiculos">
     Ver Meus Veículos
   </button>
+  <button mat-raised-button color="primary" (click)="mostrarSelecao = !mostrarSelecao">
+  Manutenção de Veículos
+</button>
 
-  <button mat-stroked-button color="warn" (click)="logout()">
+<div *ngIf="mostrarSelecao" class="botao-container" style="margin-top: 1rem;">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Escolha um veículo</mat-label>
+    <mat-select [(ngModel)]="veiculoSelecionadoId">
+      <mat-option *ngFor="let veiculo of veiculos" [value]="veiculo.id">
+        {{ veiculo.modelo }} - {{ veiculo.placa }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" [disabled]="!veiculoSelecionadoId"
+    (click)="irParaManutencao()">
+    Ir para Manutenções
+  </button>
+</div>
+
+  <button mat-raised-button color="warn" (click)="logout()">
     Sair
   </button>
 </div>

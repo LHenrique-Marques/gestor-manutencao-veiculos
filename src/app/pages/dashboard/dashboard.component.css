@@ -32,11 +32,12 @@ mat-list-item {
 
 .botao-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   gap: 1rem;
-  flex-wrap: wrap;
   margin-top: 2rem;
 }
+
 
 button {
   min-width: 180px;

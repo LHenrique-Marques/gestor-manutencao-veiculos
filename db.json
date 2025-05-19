@@ -1,83 +1,39 @@
 {
   "usuarios": [
     {
-      "id": "1",
-      "nome": "Admin",
-      "email": "admin@admin.com",
+      "id": "264c",
+      "nome": "Henrique Marques",
+      "email": "henrique@teste.com",
       "senha": "123456",
       "role": "admin"
     },
     {
-      "id": "2f97",
-      "nome": "henrique",
-      "email": "henrique@gmail.com",
+      "id": "fcf9",
+      "nome": "Ries",
+      "email": "prof@teste.com",
       "senha": "123456",
-      "role": "admin"
+      "role": "user"
     }
   ],
   "veiculos": [
     {
-      "id": "dd83",
-      "placa": "ABC1235",
+      "id": "053f",
+      "placa": "XTZ1234",
       "modelo": "Honda Civic",
       "marca": "Honda",
       "ano": 2025,
       "combustivel": "Gasolina",
-      "usuarioId": 1
-    },
-    {
-      "id": "36ab",
-      "placa": "XZT2543",
-      "modelo": "Golf Sportline",
-      "marca": "Volksvagem",
-      "ano": 2023,
-      "combustivel": "Gasolina",
-      "usuarioId": 1
-    },
-    {
-      "id": "11b6",
-      "placa": "AXT1902",
-      "modelo": "Prisma",
-      "marca": "Chevrolet",
-      "ano": 2023,
-      "combustivel": "Gasolina",
-      "usuarioId": "1"
-    },
-    {
-      "id": "d7c0",
-      "placa": "XTZ5502",
-      "modelo": "XRE 300",
-      "marca": "Honda",
-      "ano": 2024,
-      "combustivel": "Gasolina",
-      "usuarioId": 1
-    },
-    {
-      "id": "c948",
-      "placa": "XTZ1235",
-      "modelo": "XRE 300",
-      "marca": "Honda",
-      "ano": 2025,
-      "combustivel": "Gasolina",
-      "usuarioId": "2f97"
+      "usuarioId": "fcf9"
     }
   ],
   "manutencoes": [
     {
-      "id": "c5c4",
-      "data": "2002-09-21",
-      "quilometragem": 10000,
-      "servico": "testando",
-      "observacoes": "ok",
-      "veiculoId": "c948"
-    },
-    {
-      "id": "d794",
-      "data": "2025-05-18",
-      "quilometragem": 2000,
-      "servico": "avaliacao",
-      "observacoes": "ok",
-      "veiculoId": "dd83"
+      "id": "e760",
+      "data": "2025-05-19",
+      "quilometragem": 1000,
+      "servico": "vidros arrumados",
+      "observacoes": "tudo certo com o veiculo.",
+      "veiculoId": "053f"
     }
   ]
 }

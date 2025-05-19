@@ -10,12 +10,17 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+
 
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [
+  MatFormFieldModule,
+  MatSelectModule,
   CommonModule,
   RouterModule,
   FormsModule,
@@ -33,8 +38,16 @@ export class DashboardComponent {
   veiculos: Veiculo[] = [];
   veiculoSelecionadoId: string | null = null;
   alertas: string[] = [];
+  mostrarSelecao: boolean = false;
+
+  irParaManutencao() {
+    if (this.veiculoSelecionadoId) {
+      this.router.navigate([`/manutencoes/${this.veiculoSelecionadoId}`]);
+    }
+  }
 
   constructor(
+    
     public authService: AuthService,
     private veiculoService: VeiculoService,
     private manutencaoService: ManutencaoService,
@@ -42,6 +55,7 @@ export class DashboardComponent {
   ) {}
 
   ngOnInit() {
+    
     const user = this.authService.getUser();
     if (!user) return;
 
