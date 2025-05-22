@@ -12,7 +12,7 @@
     <mat-list-item *ngFor="let m of manutencoes">
       <div class="manutencao-item">
         <div>
-          <strong>{{ m.data }}</strong> - {{ m.servico }} ({{ m.quilometragem }} km)
+          <strong>Data: {{ m.data }}</strong> -<strong> Serviço Feito:</strong> {{ m.servico }} -<strong> Km:</strong> {{ m.quilometragem }} -<strong> Observação:</strong> {{m.observacoes}}
         </div>
         <div class="botoes">
           <button mat-button color="accent" [routerLink]="['/manutencoes', veiculoId, 'editar', m.id]">Editar</button>
@@ -20,6 +20,16 @@
         </div>
       </div>
     </mat-list-item>
+  <mat-card *ngFor="let veiculo of veiculos" style="margin-bottom: 1rem;">
+    <mat-card-content>
+      <p><strong>Data:</strong> {{ m.data}}</p>
+      <p><strong>Serviço Feito:</strong> {{ m.servico }}</p>
+      <p><strong>Km na data do serviço:</strong> {{ m.quilometragem }}</p>
+      <p><strong>Observações:</strong> {{ m.observacoes }}</p>
+        <button mat-button color="accent" [routerLink]="['/manutencoes', veiculoId, 'editar', m.id]">Editar</button>
+      <button mat-button color="warn" (click)="excluir(m.id)">Excluir</button>
+    </mat-card-content>
+  </mat-card>
   </mat-list>
 
   <div style="margin-top: 2rem;">

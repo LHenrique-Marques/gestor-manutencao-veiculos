@@ -1,9 +1,10 @@
 mat-card {
   margin: 2rem auto;
-  padding: 2rem;
+  padding: 1.5rem;
   max-width: 700px;
+  background-color: #fafafa;
+  align-items: center;
 }
-
 .manutencao-item {
   width: 100%;
   display: flex;
