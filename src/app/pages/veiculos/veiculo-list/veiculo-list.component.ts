@@ -11,37 +11,41 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-
+import { ManutencaoService } from '../../../services/manutencao.service';
 
 @Component({
   selector: 'app-veiculo-list',
   standalone: true,
   imports: [
-  CommonModule,
-  RouterModule,
-  FormsModule,
-  MatCardModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatButtonModule,
-  MatListModule,
-  MatIconModule
-]
-,
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatListModule,
+    MatIconModule,
+  ],
   templateUrl: './veiculo-list.component.html',
-  styleUrl: './veiculo-list.component.css'
+  styleUrl: './veiculo-list.component.css',
 })
 export class VeiculoListComponent {
   veiculos: Veiculo[] = [];
-  termoBusca: string = ''; 
+  termoBusca: string = '';
 
   constructor(
     public veiculoService: VeiculoService,
     public authService: AuthService,
-    public router: Router
+    public router: Router,
+    public manutencaoService: ManutencaoService
   ) {}
 
   ngOnInit() {
+    this.carregarVeiculos();
+  }
+
+  carregarVeiculos(): void {
     const user = this.authService.getUser();
     if (user) {
       this.veiculoService.getByUsuarioId(user.id).subscribe(data => {
@@ -52,7 +56,6 @@ export class VeiculoListComponent {
 
   get veiculosFiltrados(): Veiculo[] {
     if (!this.termoBusca.trim()) return this.veiculos;
-
     const termo = this.termoBusca.toLowerCase();
     return this.veiculos.filter(v =>
       v.placa.toLowerCase().includes(termo) ||
@@ -61,9 +64,31 @@ export class VeiculoListComponent {
     );
   }
 
-  excluir(id: string) {
-    this.veiculoService.delete(id).subscribe(() => {
-      this.veiculos = this.veiculos.filter(v => v.id !== id);
-    });
+  excluir(veiculoId: string): void {
+    if (confirm('Deseja realmente excluir este veículo?')) {
+      this.manutencaoService.getByVeiculoId(veiculoId).subscribe(manutencoes => {
+        if (manutencoes.length > 0) {
+          const deletarManutencoes = manutencoes.map(manutencao =>
+            this.manutencaoService.delete(manutencao.id).toPromise()
+          );
+
+          Promise.all(deletarManutencoes)
+            .then(() => {
+              this.veiculoService.delete(veiculoId).subscribe(() => {
+                alert('Veículo e manutenções excluídos com sucesso!');
+                this.carregarVeiculos();
+              });
+            })
+            .catch(() => {
+              alert('Erro ao deletar manutenções.');
+            });
+        } else {
+          this.veiculoService.delete(veiculoId).subscribe(() => {
+            alert('Veículo excluído com sucesso!');
+            this.carregarVeiculos();
+          });
+        }
+      });
+    }
   }
 }

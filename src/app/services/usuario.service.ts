@@ -30,7 +30,9 @@ export class UsuarioService {
   getVeiculosByUsuarioId(usuarioId: string): Observable<Veiculo[]> {
     return this.http.get<Veiculo[]>(`${this.veiculosUrl}?usuarioId=${usuarioId}`);
   }
-
+  getById(id: string): Observable<Usuario> {
+    return this.http.get<Usuario>(`${this.apiUrl}/${id}`);
+  }
   transferirVeiculo(veiculoId: string, veiculoAtualizado: Veiculo): Observable<Veiculo> {
   return this.http.put<Veiculo>(`${this.veiculosUrl}/${veiculoId}`, veiculoAtualizado);
 }

@@ -40,11 +40,6 @@ export class DashboardComponent {
   alertas: string[] = [];
   mostrarSelecao: boolean = false;
 
-  irParaManutencao() {
-    if (this.veiculoSelecionadoId) {
-      this.router.navigate([`/manutencoes/${this.veiculoSelecionadoId}`]);
-    }
-  }
 
   constructor(
     
@@ -82,6 +77,9 @@ export class DashboardComponent {
         });
       });
     });
+  }
+  irParaManutencaoVeiculo(veiculoId: string) {
+    this.router.navigate([`/manutencoes/${veiculoId}`]);
   }
 
   diasDesde(data: string): number {

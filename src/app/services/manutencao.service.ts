@@ -21,7 +21,7 @@ export class ManutencaoService {
 
   getByVeiculoId(veiculoId: string): Observable<Manutencao[]> {
   return this.http.get<Manutencao[]>(`${this.apiUrl}?veiculoId=${veiculoId}`);
-}
+  }
 
   create(manutencao: Manutencao): Observable<Manutencao> {
     return this.http.post<Manutencao>(this.apiUrl, manutencao);

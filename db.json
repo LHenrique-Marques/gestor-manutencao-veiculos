@@ -8,10 +8,10 @@
       "role": "admin"
     },
     {
-      "id": "fcf9",
-      "nome": "Ries",
-      "email": "prof@teste.com",
-      "senha": "123456",
+      "id": "a6be",
+      "nome": "teste",
+      "email": "teste@gmail.com",
+      "senha": "teste123",
       "role": "user"
     }
   ],
@@ -23,7 +23,25 @@
       "marca": "Honda",
       "ano": 2025,
       "combustivel": "Gasolina",
-      "usuarioId": "fcf9"
+      "usuarioId": "264c"
+    },
+    {
+      "id": "f619",
+      "placa": "xtz",
+      "modelo": "aasddasdas",
+      "marca": "asddasdas",
+      "ano": 213123123,
+      "combustivel": "Gasolina",
+      "usuarioId": "a6be"
+    },
+    {
+      "id": "5964",
+      "placa": "adsdasdasdas",
+      "modelo": "asdasddasdas",
+      "marca": "2asdadsdas",
+      "ano": 23213,
+      "combustivel": "Gasolina",
+      "usuarioId": "a6be"
     }
   ],
   "manutencoes": [
