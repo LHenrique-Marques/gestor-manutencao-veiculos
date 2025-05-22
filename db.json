@@ -42,17 +42,18 @@
       "ano": 23213,
       "combustivel": "Gasolina",
       "usuarioId": "a6be"
+    },
+    {
+      "id": "5134",
+      "placa": "XTZ1345",
+      "modelo": "Fiat",
+      "marca": "Fiat",
+      "ano": 2024,
+      "combustivel": "Gasolina",
+      "usuarioId": "264c"
     }
   ],
   "manutencoes": [
-    {
-      "id": "e760",
-      "data": "2025-05-19",
-      "quilometragem": 1000,
-      "servico": "vidros arrumados",
-      "observacoes": "tudo certo com o veiculo.",
-      "veiculoId": "053f"
-    },
     {
       "id": "0bf0",
       "data": "2025-05-22",
@@ -60,6 +61,14 @@
       "servico": "ajustes basicos",
       "observacoes": "tudo ok",
       "veiculoId": "f619"
+    },
+    {
+      "id": "692e",
+      "data": "2024-10-01",
+      "quilometragem": 1000,
+      "servico": "Revisao",
+      "observacoes": "ok",
+      "veiculoId": "053f"
     }
   ]
 }
